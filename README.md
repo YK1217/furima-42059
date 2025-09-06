@@ -52,17 +52,17 @@
 
 ## shippings テーブル
 
-| Column     | Type       | Options                       |
-| ---------- | ---------- | ----------------------------- |
-| postcode   | integer    | null: false                   |
-| prefecture | string     | null: false                   |
-| city       | string     | null: false                   |
-| building   | string     |                               |
-| address    | string     | null: false                   |
-| phone      | integer    | null: false                   |
-| user       | references | null: false,foreign_key: true |
-| item       | references | null: false,foreign_key: true |
-| buying     | references | null: false,foreign_key: true |
+| Column   | Type       | Options                       |
+| -------- | ---------- | ----------------------------- |
+| postcode | string     | null: false                   |
+| area_id  | integer    | null: false                   |
+| city     | string     | null: false                   |
+| building | string     |                               |
+| address  | string     | null: false                   |
+| phone    | string     | null: false                   |
+| user     | references | null: false,foreign_key: true |
+| item     | references | null: false,foreign_key: true |
+| buying   | references | null: false,foreign_key: true |
 
 ### Association
 
