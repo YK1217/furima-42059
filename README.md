@@ -60,8 +60,6 @@
 | building | string     |                               |
 | address  | string     | null: false                   |
 | phone    | string     | null: false                   |
-| user     | references | null: false,foreign_key: true |
-| item     | references | null: false,foreign_key: true |
 | buying   | references | null: false,foreign_key: true |
 
 ### Association
