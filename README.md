@@ -16,8 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :buying
-- has_many :shipping
+- has_many :buyings
 
 ## items テーブル
 
@@ -39,7 +38,7 @@
 - has_one :buying
 - has_one :shipping
 
-## buying テーブル
+## buyings テーブル
 
 | Column | Type       | Options                       |
 | ------ | ---------- | ----------------------------- |
@@ -52,7 +51,7 @@
 - belongs_to :item
 - has_one :shipping
 
-## shipping テーブル
+## shippings テーブル
 
 | Column     | Type       | Options                       |
 | ---------- | ---------- | ----------------------------- |
