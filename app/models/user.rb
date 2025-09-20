@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   validates :password, format: {with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: '半角文字で数字と英字を両方使用してください'}
 
+  has_many :items
+
   with_options presence: true do
     validates :nickname
     validates :birthday
