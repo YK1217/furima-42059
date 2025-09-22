@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :status
   belongs_to :charged_by
+  belongs_to :area
 
   belongs_to :user
   has_one_attached :image
@@ -19,5 +20,6 @@ class Item < ApplicationRecord
     validates :category_id
     validates :status_id
     validates :charged_by_id
+    validates :area_id
   end
 end
