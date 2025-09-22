@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :status
+  belongs_to :charged_by
 
   belongs_to :user
   has_one_attached :image
@@ -17,5 +18,6 @@ class Item < ApplicationRecord
   with_options numericality: { other_than: 1 , message: "can't be blank"} do
     validates :category_id
     validates :status_id
+    validates :charged_by_id
   end
 end
