@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   belongs_to :status
   belongs_to :charged_by
   belongs_to :area
+  belongs_to :length
 
   belongs_to :user
   has_one_attached :image
@@ -21,5 +22,6 @@ class Item < ApplicationRecord
     validates :status_id
     validates :charged_by_id
     validates :area_id
+    validates :length_id
   end
 end
