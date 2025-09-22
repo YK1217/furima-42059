@@ -9,6 +9,7 @@ class Item < ApplicationRecord
     validates :name
     validates :caption
     validates :price
+    validates :image
   end
 
   #ジャンルの選択が「---」の時は保存できないようにする
