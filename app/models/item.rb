@@ -12,7 +12,7 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :caption
-    validates :price
+    validates :price, format: { with: /\A[0-9]+\z/ ,message: "半角数字で入力してください"}, numericality: {only_integer: true,greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999}
     validates :image
   end
 
