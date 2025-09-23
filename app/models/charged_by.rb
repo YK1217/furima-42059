@@ -1,4 +1,4 @@
-class Charged_by < ActiveHash::Base
+class ChargedBy < ActiveHash::Base
 
   self.data = [
     { id: 1, name: '---' },
