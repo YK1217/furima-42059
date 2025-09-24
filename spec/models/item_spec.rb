@@ -35,6 +35,8 @@ RSpec.describe Item, type: :model do
       end
       it 'imageが空では商品出品できない' do
       end
+      it 'userが紐づいてなければ商品出品できない' do
+      end
 
     end
   end
