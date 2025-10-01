@@ -73,7 +73,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Price 半角数字（300以上9,999,999以下）で入力してください"
       end
       it 'imageが空では商品出品できない' do
-        @item.image = ''
+        @item.image.purge
         @item.valid?
         expect(@item.errors.full_messages).to include "Image can't be blank"
       end
@@ -82,7 +82,6 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include "User must exist"
       end
-
     end
   end
 end
