@@ -1,24 +1,26 @@
-function price (){
-  const itemPrice = document.getElementById("item-price");
+const price = () => {
+  const priceInput = document.getElementById("item-price");
+  if (!priceInput) {return; }
+  const TAX_RATE = 0.1;
+  const addTaxPrice = document.getElementById("add-tax-price");
+  const profit = document.getElementById("profit");
 
-  itemPrice.addEventListener("keyup", () => {
-    const totalPrice = parseInt(itemPrice.value);
+  priceInput.addEventListener("input", () => {
 
-    let taxPriceInt;
-    let profitPrice;
+    const inputValue = priceInput.value;
+    const totalPrice = parseInt(inputValue, 10);
 
-    if (Number.isNaN(totalPrice)) {
-      taxPriceInt = 0;
-      profitPrice = 0;
-    } else {
-    const taxPrice = totalPrice * 0.1;
-    taxPriceInt = Math.trunc(taxPrice);
-    profitPrice = totalPrice - taxPriceInt;
+    // 入力が空、または数値でない場合は0を表示して処理を終了
+    if (inputValue === "" || Number.isNaN(totalPrice)) {
+      addTaxPrice.innerHTML = 0;
+      profit.innerHTML = 0;
+      return;
     }
 
-    const addTaxPrice = document.getElementById("add-tax-price");
-    addTaxPrice.innerHTML = taxPriceInt;
-    const profit = document.getElementById("profit");
+    const tax = Math.floor(totalPrice * TAX_RATE);
+    const profitPrice = totalPrice - tax;
+
+    addTaxPrice.innerHTML = tax;
     profit.innerHTML = profitPrice;
   });
 };
