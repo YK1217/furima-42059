@@ -5,18 +5,20 @@ default: &default
 development:
   <<: *default
   adapter: mysql2
-  username: root
-  password:
+  username: <%= ENV['BASIC_DB_USER'] { 'root' } %>
+  password: <%= ENV['BASIC_DB_PASSWORD'] { '' } %>
   host: localhost
   database: furima-42059_development
+  socket: /var/run/mysqld/mysqld.sock
 
 test:
   <<: *default
   adapter: mysql2
-  username: root
-  password:
+  username: <%= ENV['BASIC_DB_USER'] { 'root' } %>
+  password: <%= ENV['BASIC_DB_PASSWORD'] { '' } %>
   host: localhost
   database: furima-42059_test
+  socket: /var/run/mysqld/mysqld.sock
 
 production:
   <<: *default
