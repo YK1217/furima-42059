@@ -5,7 +5,7 @@ class BuyingsController < ApplicationController
   before_action :redirect_if_sold_out
 
   def index
-    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
+    gon.public_key = ENV.fetch("PAYJP_PUBLIC_KEY")
     @buying_shipping = BuyingShipping.new
   end
 
@@ -17,7 +17,7 @@ class BuyingsController < ApplicationController
       @buying_shipping.save
       redirect_to root_path, notice: "購入が完了しました"
     else
-      gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
+      gon.public_key = ENV.fetch("PAYJP_PUBLIC_KEY")
       render :index, status: :unprocessable_entity
     end
   end
