@@ -36,6 +36,8 @@
 
     <%= f.hidden_field :token, id: "token" %>
 
+    <%= render partial: 'shared/error_messages', locals: {model: f.object} %>
+
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
         クレジットカード情報入力
