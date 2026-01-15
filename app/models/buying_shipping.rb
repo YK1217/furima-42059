@@ -1,7 +1,7 @@
 class BuyingShipping
   include ActiveModel::Model
 
-  attr_accessor :user_id, :item_id, :postcode, :area_id, :city, :address, :phone, :token
+  attr_accessor :user_id, :item_id, :postcode, :area_id, :city, :address, :building, :phone, :token
 
   with_options presence: true do
     validates :user_id
