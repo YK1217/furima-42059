@@ -9,23 +9,35 @@ const pay = () => {
   numberElement.mount('#number-form');
   expiryElement.mount('#expiry-form');
   cvcElement.mount('#cvc-form');
+
   const form = document.getElementById('charge-form');
-  form.addEventListener('submit', (e) => {
-    payjp.createToken(numberElement).then(function (response) {
-      if (response.error) {
-      } else {
+  if (!form) return;
+
+  form.addEventListener(
+    'submit',
+    (e) => {
+      e.preventDefault();
+
+      payjp.createToken(numberElement).then(function (response) {
+        if (response.error) {
+          // 失敗時は送信しない
+          return;
+        }
+
+        // hidden_field(:token) に代入
         const token = response.id;
-        const renderDom = document.getElementById('charge-form');
-        const tokenObj = `<input value=${token} name='token' type="hidden">`;
-        renderDom.insertAdjacentHTML('beforeend', tokenObj);
-      }
-      numberElement.clear();
-      expiryElement.clear();
-      cvcElement.clear();
-      document.getElementById('charge-form').submit();
-    });
-    e.preventDefault();
-  });
+        const tokenInput = document.getElementById('token');
+        tokenInput.value = token;
+
+        numberElement.clear();
+        expiryElement.clear();
+        cvcElement.clear();
+
+        form.submit();
+      });
+    },
+    { once: true }
+  );
 };
 
 window.addEventListener('turbo:load', pay);
