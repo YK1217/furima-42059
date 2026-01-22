@@ -26,7 +26,10 @@ class BuyingShipping
 
   private
   def seller_cannot_buy_own_item
-    item = Item.find(item_id)
+    return if item_id.blank? || user_id.blank?
+
+    item = Item.find_by(id: item_id)
+    return if item.nil?
     if item.user_id == user_id
       errors.add(:base, "出品者は自分の商品を購入できません")
     end
