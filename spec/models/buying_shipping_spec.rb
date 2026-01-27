@@ -20,6 +20,11 @@ RSpec.describe BuyingShipping, type: :model do
     end
 
     context '商品を購入できない場合' do
+      it 'tokenが空では購入できない' do
+        @buying_shipping.token = ''
+        @buying_shipping.valid?
+        expect(@buying_shipping.errors.full_messages).to include "Token can't be blank. Enter your card information"
+      end
       it 'postcodeが空では購入できない' do
         @buying_shipping.postcode = ''
         @buying_shipping.valid?
