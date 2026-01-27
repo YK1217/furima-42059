@@ -61,6 +61,9 @@ const pay = () => {
       const response = await payjp.createToken(numberElement);
 
       if (response.error) {
+        // 配送先入力のエラーを削除
+        clearRailsErrors();
+
         // PayJPのエラーメッセージを表示（無ければ汎用文）
         showError(response.error.message || 'カード情報を確認してください。');
 
@@ -85,6 +88,13 @@ const pay = () => {
       if (submitButton) submitButton.disabled = false;
     }
   });
+};
+
+const clearRailsErrors = () => {
+  const railsErrorBox = document.querySelector('.error-alert, .error-message');
+  if (railsErrorBox) {
+    railsErrorBox.innerHTML = '';
+  }
 };
 
 window.addEventListener('turbo:load', pay);
