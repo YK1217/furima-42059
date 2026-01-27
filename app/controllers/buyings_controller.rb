@@ -18,6 +18,8 @@ class BuyingsController < ApplicationController
       redirect_to root_path, notice: "購入が完了しました"
     else
       gon.public_key = ENV.fetch("PAYJP_PUBLIC_KEY")
+      flash.now[:payjp_error] = nil
+      @buying_shipping.token = nil
       render :index, status: :unprocessable_entity
     end
   end
