@@ -11,7 +11,7 @@ class BuyingShipping
     validates :postcode, format: {with: /\A\d{3}-\d{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :city
     validates :address
-    validates :phone, format: {with: /\A\d{10,11}\z/, message: "is invalid. Only numbers are allowed"}
+    validates :phone, format: {with: /\A\d{10,11}\z/, message: "is invalid. Only ten or eleven half-width numbers are allowed"}
   end
 
   validates :area_id, numericality: { other_than: 1, message: "can't be blank"}
