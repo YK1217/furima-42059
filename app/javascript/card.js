@@ -31,7 +31,6 @@ const pay = () => {
       return;
     }
     errorBox.textContent = message || '';
-    // classで表示制御している場合に備えて、空なら消す運用にもできる
     // errorBox.style.display = message ? 'block' : 'none';
   };
   const clearError = () => showError('');
@@ -70,6 +69,7 @@ const pay = () => {
         // 再入力・再送信できるように戻す
         isSubmitting = false;
         if (submitButton) submitButton.disabled = false;
+        errorBox.scrollIntoView({ behavior: 'auto' });
         return;
       }
 
@@ -86,6 +86,7 @@ const pay = () => {
 
       isSubmitting = false;
       if (submitButton) submitButton.disabled = false;
+      errorBox.scrollIntoView({ behavior: 'auto' });
     }
   });
 };
