@@ -77,6 +77,7 @@ end
 group :production do
   gem 'pg'
   gem 'unicorn', '6.1.0'
+  gem "nokogiri", force_ruby_platform: true
 end
 
 gem 'devise'
